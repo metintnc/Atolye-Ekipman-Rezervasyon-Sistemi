@@ -1,91 +1,46 @@
-Bir Atölye Ekipman Rezervasyon Sistemi
+# 🛠️ Atölye Ekipman Rezervasyon Sistemi
 
-Bu proje, bir atölyedeki ekipmanların üyeler tarafından rezervasyon, ödünç alma ve iade süreçlerinin yönetilmesini sağlayan basit bir OOP tabanlı C# konsol uygulamasıdır. Tüm veriler bellek içinde tutulur.
+Bu proje, bir atölyedeki ekipmanların üyeler tarafından ödünç alınmasını, rezerve edilmesini ve iade süreçlerini yöneten bir C# Konsol uygulamasıdır. **Nesne Yönelimli Programlama (OOP)** prensiplerine uygun olarak geliştirilmiştir.
 
-🎯 Amaç
+## 📝 Proje Hakkında
 
-OOP prensiplerine uygun bir sınıf yapısı tasarlamak
+Uygulama, kullanıcıların sisteme giriş yaparak matkap, testere gibi atölye ekipmanlarını kiralamasına olanak tanır. Sistem; ekipmanların müsaitlik durumunu, bakımda olup olmadıklarını ve önceki kullanıcı geçmişini takip eder.
 
-En az 5 farklı sınıf ve anlamlı bir hiyerarşi kullanmak
+Bu proje, **Bilgisayar Mühendisliği OOP Dersi** kapsamında; sınıf tasarımı, kapsülleme (encapsulation) ve iş akışı yönetimi yeteneklerini sergilemek amacıyla hazırlanmıştır.
 
-Ekipmanların müsaitlik, bakım durumu ve işlem akışlarının kontrolünü sağlamak
+## 🚀 Teknik Özellikler ve Mimari
 
-Özgün kurallar ekleyerek sistemi zenginleştirmek
+Proje toplamda **5 temel sınıf** üzerine kurulmuştur:
 
+1.  **Kullanıcı:** Üye bilgilerini ve giriş işlemlerini yönetir.
+2.  **Ekipman:** Atölyedeki aletlerin isimlerini ve kodlarını tutar.
+3.  **Musaitlik:** Ekipmanların doluluk/boşluk durumunu kontrol eder.
+4.  **Bakım:** Rastgele olarak bazı ekipmanları "Bakımda" durumuna getirir ve kiralanmasını engeller.
+5.  **İslem:** Ödünç alma, rezervasyon ve iade iş akışlarını yönetir; önceki kullanıcıyı hafızada tutar.
 
+## ✨ Eklenen Özgün Kurallar
 
-🧩 Temel Özellikler
+Ödev kapsamında istenen "Özgün Kurallar" şu şekilde sisteme entegre edilmiştir:
 
-✔ Üyeler
+* **🔞 Yaş Sınırlaması:** Tehlikeli ekipmanlar (Örn: Matkap, Testere) için 18 yaş kontrolü vardır. 18 yaşından küçük üyeler bu ekipmanları ödünç alamaz.
+* **📅 Süre Kısıtlaması:** Bir ekipman en fazla **7 gün** süreyle ödünç alınabilir.
 
-Sisteme kayıtlı üyeler ekipmanları rezervasyon yapabilir ve ödünç alabilir.
+## 💻 Nasıl Çalışır?
 
-Geçmiş işlem bilgileri tutulur.
+Program başlatıldığında rastgele bazı ekipmanlar "Bakım" moduna alınır.
 
+1.  **Giriş:** Kullanıcı üye olur veya mevcut listeden giriş yapar.
+2.  **Yaş Kontrolü:** Kullanıcının yaşı istenir.
+3.  **İşlem Seçimi:** Ödünç Alma, Rezervasyon veya İade seçilir.
+4.  **Kontroller:** Seçilen ekipman bakımda mı? Başkası kullanıyor mu? Yaş yetiyor mu?
+5.  **Sonuç:** İşlem başarılıysa ekrana döküm verilir:
+    > *"Ekipman: Matkap, Kodu: M001, Ödünç Alan: Ali, Süre: 3 Gün, Önceki Kullanıcı: Ahmet"*
 
-✔ Ekipmanlar
+## 🛠 Kullanılan Teknolojiler
 
-Her ekipmanın bir kodu, adı ve durumu vardır.
+* **Dil:** C# (.NET)
+* **Veri Yönetimi:** `List<T>` koleksiyonları (Veritabanı yerine bellek içi yönetim)
+* **Hata Yönetimi:** `Try-Catch` blokları ile kullanıcı hataları yakalanır.
 
-Bakımda olan ekipman ödünç verilemez.
-
-Müsaitlik kontrolü tüm işlemlerden önce zorunludur.
-
-
-✔ İş Akışları
-
-Rezervasyon
-
-Ödünç Alma
-
-İade
-
-İade işleminden sonra önceki kullanıcı bilgisi sistemde saklanır ve gösterilir.
-
-
-🛠 Ek OOP Gereksinimleri
-
-Tüm alanlar private, dış erişim property/metot ile sağlanır.
-
-Anlamlı hata/istisna yönetimi içerir.
-
-Veriler List<> ve Dictionary<> yapılarıyla RAM’de tutulur.
-
-En az 5 sınıf bulunur (örnek: Member, Equipment, Reservation, LoanManager, WorkshopSystem).
-
-
-
-⭐ Özgün Kurallar
-
-Projeye iki özel kural eklenmiştir:
-
-
-1. Eğitim Zorunluluğu
-
-Bazı ekipmanlar için belirli bir eğitim tamamlamış olmak gerekir.
-
-Eğitim almamış üyeler bu ekipmanı rezervasyon yapamaz veya ödünç alamaz.
-
-
-2. Maksimum Kullanım Süresi
-
-Her ekipmanın maksimum kullanım süresi vardır.
-
-Süre aşıldığında sistem uyarı verir veya işlem reddedilir.
-
-```
-📤 Örnek Çıktı
-Ekipman: Matkap  
-Kodu: EQ-101  
-Ödünç: Metin  
-İade: 22.11.2025  
-Önceki: Ahmet
-```
-
-🚀 Çalıştırma
-
-Proje bir C# .NET konsol uygulamasıdır.
-
-Herhangi bir veritabanı kullanılmaz.
-
-Uygulama doğrudan Program.cs üzerinden başlatılır.
+---
+**Geliştirici:** [Adın Soyadın]
